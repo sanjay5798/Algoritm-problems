@@ -1,0 +1,22 @@
+def maxSubsetSum(arr,n):
+    max=0
+    for i in range(n):
+        incl=arr[i]
+        excl=0
+        for j in range(i+1,n):
+            a=excl+arr[j]
+            if a>incl:
+                excl=incl
+                incl=a
+            else:
+                excl=incl
+            a=0
+        if(incl>max):
+            max=incl    
+    return max
+    
+    n = int(input())
+    arr = list(map(int, input().rstrip().split()))
+    res = maxSubsetSum(arr,n)
+    print(res)
+    
