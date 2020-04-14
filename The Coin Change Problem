@@ -1,0 +1,25 @@
+def getWays(n, coins):
+    row=len(coins)
+    matrix= [ [0] *  (n+1) for i in range(row) ]
+    
+    for i in range(row):
+        matrix[i][0]=1
+    
+    for j in range(n+1):
+        if j%coins[0] == 0:
+            matrix[0][j]=1
+        else:
+            matrix[0][j]=1
+                    
+    for i in range(row):
+        for j in range(n+1):
+            if coins[i]>j:
+                matrix[i][j]=matrix[i-1][j]
+            else:
+                matrix[i][j]=matrix[i-1][j]+matrix[i][j-coins[i]]  
+    return matrix[row-1][n]
+
+n=10
+a=[2,5,3,6]
+ways=getWays(n, a)
+print(ways)
