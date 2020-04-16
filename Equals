@@ -1,0 +1,8 @@
+def equal(arr):
+    MIN = min(arr)
+    ans = float('inf')
+    for i in range(5):
+        dec = MIN - i
+        cur = sum([(n-dec)//5 + (n-dec)%5//2 + (n-dec)%5%2 for n in arr])
+        ans = min(ans, cur)
+    return ans
